@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IndexViewModel
+
+<h2>Bowling League Bowlers</h2>
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <vc:team-name />
+        </div>
+        <div class="col">
+            <h3>@Model.TeamName</h3>
+            <table class="table table-hover">
+                <tr class="thead-dark">
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Phone Number</th>
+                </tr>
+                @foreach (var x in Model.Bowlers)
+                {
+                    <tr>
+                        <td>@x.BowlerFirstName @x.BowlerLastName</td>
+                        <td>@x.BowlerAddress</td>
+                        <td>@x.BowlerCity</td>
+                        <td>@x.BowlerState</td>
+                        <td>@x.BowlerZip</td>
+                        <td>@x.BowlerPhoneNumber</td>
+                    </tr>
+                }
+            </table>
+            <div class="pagination" page-info="@Model.PageNumberingInfo" page-url-teamname="@Model.TeamName"></div>
+        </div>
+    </div>
+</div>
